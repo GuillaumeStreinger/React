@@ -1,0 +1,21 @@
+.App {
+  max-width: 640px;
+  padding-top: 20px;
+  margin: 0 auto;
+  padding-bottom: 20px;
+  display: grid;
+  gap: 10px;
+}
+
+nav{
+  background : lightblue;
+  display: 	flex;
+  gap: 12px;
+  padding: 20px;
+  font-weight: bold;
+}
+
+.Button-Group{
+  display: flex;
+  gap: 5px;
+}

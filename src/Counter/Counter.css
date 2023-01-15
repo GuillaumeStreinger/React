@@ -1,0 +1,24 @@
+.App {
+  max-width: 400px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  display: grid;
+  gap: 10px;
+}
+
+.Button-group{
+  display: flex;
+  gap: 5px;
+}
+
+.Count-too-high{
+  color: orange;
+}
+
+.Warning-message{
+  background: lightyellow;
+  border: 1px solid orange;
+  border-radius: 4px;
+  padding: 8px;
+
+}
