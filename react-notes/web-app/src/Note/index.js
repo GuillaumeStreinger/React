@@ -13,6 +13,7 @@ import { FiCheck } from "react-icons/fi";
 import { IconAndLabel } from "../IconAndLabel/IconAndLabel.styled";
 import { FullHeightAndWidthCentered } from "../App.styled";
 import { DeleteNote } from "../Aside/Aside.styled";
+import Modal from "../Modal";
 
 const Note = ({ onSave, onDelete }) => {
   const { id } = useParams();
@@ -22,6 +23,7 @@ const Note = ({ onSave, onDelete }) => {
   const [saveStatus, setSaveStatus] = useState("IDLE");
   const timer = useRef(null);
   const navigate = useNavigate();
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const fetchNote = useCallback(async () => {
     setGetStatus("LOADING");
@@ -97,6 +99,7 @@ const Note = ({ onSave, onDelete }) => {
   }
 
   return (
+    <>
     <Form
       onSubmit={(event) => {
         event.preventDefault();
@@ -124,7 +127,7 @@ const Note = ({ onSave, onDelete }) => {
           });
         }}
       />
-      <DeleteNote onClick={deleteNote}>
+      <DeleteNote onClick={() => {setIsModalOpen(true)}} type="button">
         Delete
       </DeleteNote>
       <SaveAndStatus>
@@ -141,6 +144,16 @@ const Note = ({ onSave, onDelete }) => {
         ) : null}
       </SaveAndStatus>
     </Form>
+    {isModalOpen &&<Modal
+    open = {isModalOpen}
+    close={() => setIsModalOpen(false)}
+    onSubmit={(event) => {
+      event.preventDefault();
+      saveNote();
+    }}
+    onClick={deleteNote}
+    >
+    </Modal>}</>
   );
 };
 
