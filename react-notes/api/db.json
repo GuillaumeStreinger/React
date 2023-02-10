@@ -1,0 +1,24 @@
+{
+  "notes": [
+    {
+      "id": 1,
+      "title": "Initiation à React",
+      "contenu": "lorem ipsum",
+      "content": "Hello salut"
+    },
+    {
+      "id": 2,
+      "title": "utilisation de json-server",
+      "contenu": "bla bla",
+      "content": "Coucou\nje suis une patate"
+    },
+    {
+      "title": "New Note",
+      "content": "",
+      "id": 4
+    }
+  ],
+  "profile": {
+    "name": "Guillaume"
+  }
+}
