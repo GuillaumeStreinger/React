@@ -9,6 +9,7 @@ import {
   Main,
   FullHeightAndWidthCentered,
   LoaderWrapper,
+  Scroll,
 } from "./App.styled";
 import { NoteList } from "./NoteList/NoteList.styled";
 import LinkToNote from "./LinkToNote";
@@ -34,12 +35,13 @@ function App() {
     );
   };
 
+  
   const delNote = (idToDelete) => {
     setNotes(
       notes.filter(note => note.id !== idToDelete)
     );
   }
-
+  
   const insertNote = (noteToInsert) => {
     setNotes([noteToInsert, ...notes]);
   }
@@ -70,23 +72,25 @@ function App() {
     <ThemeProvider theme={darkTheme}>
       <GlobalStyle />
       <Side>
-        {isLoading && (
-          <LoaderWrapper>
-            <Loader />
-          </LoaderWrapper>
-        )}
-        {notes && (
-          <NoteList>
-            {notes.map((note) => (
-              <li key={note.id}>
-                <LinkToNote id={note.id} title={note.title} />
-              </li>
-            ))}
-          </NoteList>
-        )}
         <CreateLink onClick={createNote}>
           New Note
         </CreateLink>
+        <Scroll>
+          {isLoading && (
+            <LoaderWrapper>
+              <Loader />
+            </LoaderWrapper>
+          )}
+          {notes && (
+            <NoteList>
+              {notes.map((note) => (
+                <li key={note.id}>
+                  <LinkToNote id={note.id} title={note.title} />
+                </li>
+              ))}
+            </NoteList>
+          )}
+        </Scroll>
       </Side>
       <Main>
         <Routes>
