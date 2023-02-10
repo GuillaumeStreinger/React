@@ -13,7 +13,7 @@ import { FiCheck } from "react-icons/fi";
 import { IconAndLabel } from "../IconAndLabel/IconAndLabel.styled";
 import { FullHeightAndWidthCentered } from "../App.styled";
 import { DeleteNote } from "../Aside/Aside.styled";
-import Modal from "../Modal";
+import Modal from "../Modal/Modal";
 
 const Note = ({ onSave, onDelete }) => {
   const { id } = useParams();

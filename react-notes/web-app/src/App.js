@@ -3,7 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import { useNavigate } from "react-router-dom";
 
-import { darkTheme, GlobalStyle } from "./GlobalStyle";
+import { darkTheme, GlobalStyle, lightTheme } from "./GlobalStyle";
 import {
   Side,
   Main,
@@ -15,12 +15,21 @@ import { NoteList } from "./NoteList/NoteList.styled";
 import LinkToNote from "./LinkToNote";
 import Note from "./Note";
 import { Loader } from "./Note/Note.styled";
-import { CreateLink} from "./Aside/Aside.styled";
+import { CreateLink, Theme} from "./Aside/Aside.styled";
 
 function App() {
   const [notes, setNotes] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
+  const [theme, setTheme] = useState(darkTheme);
+
+  const toggleTheme = () => {
+    if(theme == darkTheme){
+      setTheme(lightTheme);
+    }else{
+      setTheme(darkTheme);
+    }
+  }
 
   const fetchNotes = async () => {
     const response = await fetch("/notes?_sort=id&_order=desc");
@@ -69,9 +78,12 @@ function App() {
   }, []);
 
   return (
-    <ThemeProvider theme={darkTheme}>
+    <ThemeProvider theme={theme}>
       <GlobalStyle />
       <Side>
+        <Theme onClick={toggleTheme}>
+          Change Theme
+        </Theme>
         <CreateLink onClick={createNote}>
           New Note
         </CreateLink>
