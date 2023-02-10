@@ -4,8 +4,8 @@ import { DIV, H1, FORM, POPUP, BUTTON} from "./Modal.styled";
 export default function Modal(props) {
     
 return (
-    <DIV>
-        <POPUP>
+    <DIV onClick={props.close}>
+        <POPUP onClick={e => e.stopPropagation()}>
             <H1>Souhaitez vous réellement supprimer cette page</H1>
             <FORM id='delNote' onSubmit={e => props.deleteNote(e)}>
                 <BUTTON id="buttons">
